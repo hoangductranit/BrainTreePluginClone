@@ -1,0 +1,19 @@
+{
+  "name": "peter-plugin-braintree",
+  "version": "0.1.0",
+  "description": "",
+  "cordova": {
+    "id": "peter-plugin-braintree",
+    "platforms": [
+      "android",
+	"ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Peter Tran",
+  "license": "MIT"
+}
