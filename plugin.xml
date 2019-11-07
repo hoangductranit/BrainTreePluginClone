@@ -1,2 +1,32 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="peter-plugin-braintree" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android"><name>BrainTree Plugin</name><description>BrainTree plugin using Drop In v4.4.1</description><author>Peter Tran</author><js-module name="BrainTreePlugin" src="www/BrainTreePlugin.js"><clobbers target="BrainTreePlugin" /></js-module><dependency id="cordova-plugin-add-swift-support@1.7.2" /><platform name="android"><config-file parent="/*" target="res/xml/config.xml"><feature name="BrainTreePlugin"><param name="android-package" value="peter.plugin.braintree.BrainTreePlugin" /></feature></config-file><config-file parent="/*" target="AndroidManifest.xml" /><source-file src="src/android/BrainTreePlugin.java" target-dir="src/peter/plugin/braintree/BrainTreePlugin" /><framework custom="true" src="src/android/build-extras.gradle" type="gradleReference" /><config-file parent="/manifest/application" target="AndroidManifest.xml"><activity android:launchMode="singleTask" android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"><intent-filter><action android:name="android.intent.action.VIEW" /><category android:name="android.intent.category.DEFAULT" /><category android:name="android.intent.category.BROWSABLE" /><data android:scheme="${applicationId}.braintree" /></intent-filter></activity><meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true" /></config-file></platform></plugin>
+<plugin id="peter-plugin-braintree" version="0.1.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>BrainTree Plugin</name>
+    <description>BrainTree plugin using Drop In v4.4.1</description>
+    <author>Peter Tran</author>
+    <js-module name="BrainTreePlugin" src="www/BrainTreePlugin.js">
+        <clobbers target="BrainTreePlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="BrainTreePlugin">
+                <param name="android-package" value="peter.plugin.braintree.BrainTreePlugin" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="src/android/BrainTreePlugin.java" target-dir="src/peter/plugin/braintree/BrainTreePlugin" />
+        <framework custom="true" src="src/android/build-extras.gradle" type="gradleReference" />
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <activity android:launchMode="singleTask" android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity">
+                <intent-filter>
+                    <action android:name="android.intent.action.VIEW" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                    <category android:name="android.intent.category.BROWSABLE" />
+                    <data android:scheme="${applicationId}.braintree" />
+                </intent-filter>
+            </activity>
+            <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true" />
+        </config-file>
+    </platform>
+</plugin>
