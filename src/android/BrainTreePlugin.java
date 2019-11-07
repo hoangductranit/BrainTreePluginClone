@@ -10,6 +10,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.braintreepayments.api.BraintreeBrowserSwitchActivity;
+import com.braintreepayments.api.BraintreeFragment;
+import com.braintreepayments.api.PayPal;
+import com.braintreepayments.api.PaymentMethod;
+import com.braintreepayments.api.dropin.DropInActivity;
+import com.braintreepayments.api.dropin.utils.PaymentMethodType;
+import com.braintreepayments.api.models.BraintreePaymentResult;
 import com.braintreepayments.api.models.CardNonce;
 import com.braintreepayments.api.models.PayPalAccountNonce;
 import com.braintreepayments.api.models.PaymentMethodNonce;
@@ -222,8 +229,7 @@ public class BrainTreePlugin extends CordovaPlugin {
             }
             else {
                 Exception error = (Exception)intent.getSerializableExtra(DropInActivity.EXTRA_ERROR);
-                dropInUICallbackContext.error(error.getMessage());
-                return;
+                dropInUICallbackContext.error(error.getMessage());return;
             }
         }
         else if (requestCode == PAYMENT_BUTTON_REQUEST) {
@@ -239,7 +245,7 @@ public class BrainTreePlugin extends CordovaPlugin {
             //TODO
         }
     }
-    private void handleDropInPaymentUiResult(int resultCode, PaymentMethodNonce paymentMethodNonce) {
+    private void handleDropInPaymentUiResult(PaymentMethodNonce paymentMethodNonce) {
 
         if (dropInUICallbackContext == null) {
             return;
