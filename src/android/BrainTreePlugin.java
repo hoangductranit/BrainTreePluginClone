@@ -217,7 +217,7 @@ public class BrainTreePlugin extends CordovaPlugin {
             if(resultCode==Activity.RESULT_OK) {
                 DropInResult result = intent.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 paymentMethodNonce = result.getPaymentMethodNonce();
-                this.handleDropInPaymentUiResult(paymentMethodNonce);
+                this.handleDropInPaymentUiResult(result.getDeviceData(),paymentMethodNonce);
             }
             else if(requestCode==Activity.RESULT_CANCELED)
             {
@@ -245,7 +245,7 @@ public class BrainTreePlugin extends CordovaPlugin {
             //TODO
         }
     }
-    private void handleDropInPaymentUiResult(PaymentMethodNonce paymentMethodNonce) {
+    private void handleDropInPaymentUiResult(String deviceData,PaymentMethodNonce paymentMethodNonce) {
 
         if (dropInUICallbackContext == null) {
             return;
@@ -257,15 +257,16 @@ public class BrainTreePlugin extends CordovaPlugin {
             return;
         }
 
-        Map<String, Object> resultMap = this.getPaymentUINonceResult(paymentMethodNonce);
+        Map<String, Object> resultMap = this.getPaymentUINonceResult(deviceData,paymentMethodNonce);
         dropInUICallbackContext.success(new JSONObject(resultMap));
         dropInUICallbackContext = null;
     }
-    private Map<String, Object> getPaymentUINonceResult(PaymentMethodNonce paymentMethodNonce) {
+    private Map<String, Object> getPaymentUINonceResult(String deviceData,PaymentMethodNonce paymentMethodNonce) {
 
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
         resultMap.put("nonce", paymentMethodNonce.getNonce());
+        resultMap.put("devicedata",deviceData);
         resultMap.put("type", paymentMethodNonce.getTypeLabel());
         resultMap.put("localizedDescription", paymentMethodNonce.getDescription());
 
