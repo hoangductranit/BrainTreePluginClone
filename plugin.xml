@@ -18,7 +18,8 @@
         <source-file src="src/android/BrainTreePlugin.java" target-dir="src/peter/plugin/braintree/BrainTreePlugin" />
         <framework custom="true" src="src/android/build-extras.gradle" type="gradleReference" />
         <config-file parent="/manifest/application" target="AndroidManifest.xml">
-            <activity android:launchMode="singleTask" android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity">
+            <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+                android:launchMode="singleTask">
                 <intent-filter>
                     <action android:name="android.intent.action.VIEW" />
                     <category android:name="android.intent.category.DEFAULT" />

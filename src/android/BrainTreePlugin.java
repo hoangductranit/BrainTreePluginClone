@@ -228,8 +228,16 @@ public class BrainTreePlugin extends CordovaPlugin {
                 return;
             }
             else {
-                Exception error = (Exception)intent.getSerializableExtra(DropInActivity.EXTRA_ERROR);
-                dropInUICallbackContext.error(error.getMessage());return;
+                if(intent!=null){
+                    Exception error = (Exception)intent.getSerializableExtra(DropInActivity.EXTRA_ERROR);
+                    dropInUICallbackContext.error(error.getMessage());
+                }
+                else
+                {
+                    dropInUICallbackContext.error("Intent is null");
+                }
+                dropInUICallbackContext = null;
+                return;
             }
         }
         else if (requestCode == PAYMENT_BUTTON_REQUEST) {
