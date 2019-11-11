@@ -15,6 +15,8 @@ dependencies {
     implementation 'com.braintreepayments.api:data-collector:2.22.0'
      // Google dependencies
     implementation 'com.google.android.gms:play-services-wallet:16.0.1'
+    //Scan card
+    implementation 'io.card:android-sdk:5.+'
 }
 
 def getPackageName() {
